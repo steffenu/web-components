@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-18 14:13:11
+ * @Last Modified time: 2022-01-19 11:45:41
  */
 /* 
 
@@ -16,7 +16,7 @@ DESCRIPTION
 
 //  ########## VISUALISATION ##############
 // Just for visualation ... Elements get created with javscript
-const template = `
+/* const template = `
 <nav>
 <ul class="nav-list">
   <img id="lc-logo" src="assets/img/logo.svg" alt="" />
@@ -27,7 +27,7 @@ const template = `
 </nav>
 <img src="" alt="" />
 
-`;
+`; */
 
 // Custom-Element my-element anlegen
 class lcHeader extends HTMLElement {
@@ -67,7 +67,12 @@ class lcHeader extends HTMLElement {
 
     ul.classList.add("lc-header-list");
     img.classList.add("lc-header-logo");
-    img.setAttribute("src", "assets/img/logo.svg");
+
+    /*     var location = window.location;
+    let foldersAndFile = location.pathname.split("/");
+    console.log("location:", foldersAndFile[1]); */
+
+    img.setAttribute("src", "../web-components/lc-header/assets/img/logo.svg");
 
     li_1.classList.add("lc-header-list__item");
     li_2.classList.add("lc-header-list__item");
@@ -192,9 +197,18 @@ class lcHeader extends HTMLElement {
        height: 57px;
      }
 
+     .darkmode{
+       background-color:#181A1B;
+     }
+
      @media (max-width: 1200px) {
       .lc-header-list__item{
         display:none;
+        
+      }
+      .lc-header-list{
+        justify-content:center;
+        padding-right:0;
         
       }
       }
