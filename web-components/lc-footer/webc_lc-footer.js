@@ -424,6 +424,6 @@ class lcFooter extends HTMLElement {
 }
 customElements.define("lc-footer", lcFooter);
 
-var lc_footer = document.createElement("lc-footer");
+/* var lc_footer = document.createElement("lc-footer");
 // Add it to the page
-document.body.appendChild(lc_footer);
+document.body.appendChild(lc_footer); */

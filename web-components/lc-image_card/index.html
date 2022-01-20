@@ -4,26 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
+    <link rel="stylesheet" href="sizing.css" />
   </head>
   <body>
-    <lc-header></lc-header>
-
-    <lc-news
-      hashtag_text="showroom"
-      title_text="Spotlight on: Websites zum Erleben"
-      paragraph_text="Lassen Sie sich anhand einiger ausgewählter Webprojekte inspirieren."
-    ></lc-news>
-
     <div
-      style="
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4rem;
-        justify-content: center;
-        margin: 8rem 0;
-      "
+      style="display: flex; flex-wrap: wrap; gap: 4rem; justify-content: center"
     >
       <lc-image-card
         img_src="img/image1.webp"
@@ -46,12 +32,6 @@
         paragraph_text="Lassen Sie sich anhand einiger ausgewählter Webprojekte inspirieren."
       ></lc-image-card>
     </div>
-
-    <lc-footer></lc-footer>
-
-    <script src="../web-components/lc-header/webc_lc-header.js"></script>
-    <script src="../web-components/lc-footer/webc_lc-footer.js"></script>
-    <script src="../web-components/lc-news/webc_lc-news.js"></script>
-    <script src="../web-components/lc-image_card/webc_lc-image_card.js"></script>
+    <script src="webc_lc-image_card.js"></script>
   </body>
 </html>
