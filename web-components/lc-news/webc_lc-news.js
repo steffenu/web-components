@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-20 14:04:05
+ * @Last Modified time: 2022-01-20 14:27:47
  */
 /* 
 
@@ -165,7 +165,7 @@ class lcNews extends HTMLElement {
       justify-content:center;
       align-items: center;
       min-height : 16rem;
-      box-shadow: 2px 2px 2px 2px rgb(0 0 41 / 30%);
+      box-shadow: 0px 1px 0px 0px rgb(0 0 41 / 30%);
       margin: 2rem 0 ;
       
     }

@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-20 13:40:45
+ * @Last Modified time: 2022-01-20 14:25:08
  */
 /* 
 
@@ -174,7 +174,7 @@ class lcHeader extends HTMLElement {
        align-items:center;
        font-family: "Barlow Condensed", sans-serif;
        font-weight : 700;
-       font-size:26px;
+       font-size:32px;
        line-height:47.5px;
        color:#900811;
 
