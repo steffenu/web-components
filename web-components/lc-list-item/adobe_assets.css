@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: 100%;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+/* FOOTER ALWAYS AT BOTTOM ;) */
+body {
+  height: 100%;
+  /* min-height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  background-color: #f7f7f7;
+}
+
+main {
+  padding: 0 4rem;
+}
+
+.nav-container {
+  height: 175px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+#lc-logo {
+  height: 57px;
+  margin-left: 164px;
+}
+
+footer {
+  margin-top: 60px;
+  height: 71px;
+  background-color: #000c2e;
+  font-size: 1.6rem;
+}
+
+/* Footer */
+.list {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  color: white;
+}
+
+.info {
+  display: flex;
+  border-bottom: 1px solid grey;
+  flex-basis: 200px;
+  max-width: 492px;
+  padding: 1rem 0;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.info__headline {
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.info__text {
+  font-family: "Fira Code", monospace;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+button {
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+  background-color: #f7f7f7;
+  padding: 1rem 3rem;
+  border: 6px solid white;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.font-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.font-list-item {
+  display: flex;
+  flex-direction: column;
+  border: 6px solid white;
+  border-radius: 5px;
+  flex-basis: 100px;
+  max-width: 400px;
+
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 0 4rem;
+}
+
+.labels {
+  display: flex;
+  list-style: none;
+  font-family: "Fira Code", monospace;
+  font-weight: 300;
+  color: #334155;
+  font-size: 1rem;
+}
+
+.label-font-family {
+}
+
+.label-font-weight {
+  margin-left: auto;
+}
+
+.values {
+  display: flex;
+  list-style: none;
+  font-family: "Fira Code", monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.fonty-family {
+}
+.font-weight {
+  margin-left: auto;
+}

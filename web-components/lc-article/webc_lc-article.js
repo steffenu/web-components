@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-20 15:35:10
+ * @Last Modified time: 2022-01-20 15:11:15
  */
 /* 
 
@@ -24,7 +24,7 @@ DESCRIPTION
 `; */
 
 // Custom-Element my-element anlegen
-class lcNews extends HTMLElement {
+class lcArticle extends HTMLElement {
   // Festlegen, welche Attribute überwacht werden solle
 
   static get observedAttributes() {
@@ -48,11 +48,21 @@ class lcNews extends HTMLElement {
     // #################### CREATING ELEMENTS ########################
     // ###############################################################
 
-    const news_div = document.createElement("div");
+    const article_div = document.createElement("div");
     const text_container = document.createElement("div");
     const hashtag_text = document.createElement("p");
     const title_text = document.createElement("h2");
     const paragraph_text = document.createElement("p");
+    const list = document.createElement("ul");
+
+    const list_item_1 = document.createElement("li");
+    const list_item_2 = document.createElement("li");
+    const list_item_3 = document.createElement("li");
+    const list_item_4 = document.createElement("li");
+    const list_item_5 = document.createElement("li");
+    const list_item_6 = document.createElement("li");
+
+    const callToAction = document.createElement("a");
 
     // #################### ADDING CLASSES ############################
     // ################################################################
@@ -63,12 +73,30 @@ class lcNews extends HTMLElement {
     title_text.classList.add("title-text");
     paragraph_text.classList.add("paragraph-text");
 
+    list.classList.add("list");
+
+    list_item_1.classList.add("list-item");
+    list_item_2.classList.add("list-item");
+    list_item_3.classList.add("list-item");
+    list_item_4.classList.add("list-item");
+    list_item_5.classList.add("list-item");
+    list_item_6.classList.add("list-item");
+
+    callToAction.classList.add("call-to-action");
+
     // #################### SETTING TEXT ##############################
     // ################################################################
 
     hashtag_text.innerText = `${this.getAttribute("hashtag_text")}`;
     title_text.innerText = `${this.getAttribute("title_text")}`;
     paragraph_text.innerText = `${this.getAttribute("paragraph_text")}`;
+
+    list_item_1.innerText = `${this.getAttribute("item1")}`;
+    list_item_2.innerText = `${this.getAttribute("item2")}`;
+    list_item_3.innerText = `${this.getAttribute("item3")}`;
+    list_item_4.innerText = `${this.getAttribute("item5")}`;
+    list_item_5.innerText = `${this.getAttribute("item6")}`;
+    list_item_6.innerText = `${this.getAttribute("item6")}`;
 
     // #################### APPENDING ###################################
     // ##################################################################
@@ -174,9 +202,7 @@ class lcNews extends HTMLElement {
     .text-container {
       display:flex;
       flex-direction: column;
-
-
-      
+ 
     }
     .hashtag-text{
       font-family: "Barlow Condensed", sans-serif;
@@ -190,15 +216,13 @@ class lcNews extends HTMLElement {
       font-weight : 700;
       font-size:26px;
       color: rgb(142, 199, 215);
-      line-height: 1.4;
     }
     .paragraph-text {
       font-family: "Barlow Condensed", sans-serif;
       font-weight : 100;
-      font-size:20px;
+      font-size:16px;
       color:#2E3336;
       line-height: 1.4;
-      -webkit-font-smoothing: antialiased; 
     }
    
     .hashtag-text:before{
@@ -239,7 +263,7 @@ class lcNews extends HTMLElement {
     // Achtung attributeChangedCallback wird vor connectedCallback aufgerufen
   }
 }
-customElements.define("lc-news", lcNews);
+customElements.define("lc-article", lcArticle);
 
 //var lc_news = document.createElement("lc-news");
 // Add it to the page
