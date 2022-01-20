@@ -2,7 +2,10 @@
 
 # Use Case
 
-Reusable Component
+Reusable Components.
+
+- Zur Einfachen Verwendung im HTML Dokument.
+- Konsistenz.
 
 ## USAGE
 
