@@ -7,17 +7,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="sizing.css" />
   </head>
-  <body>
-    <lc-news
-      hashtag_text="showroom"
-      title_text="Spotlight on: Websites zum Erleben"
-      paragraph_text="Lassen Sie sich anhand einiger ausgewählter Webprojekte inspirieren."
-    ></lc-news>
-    <lc-news
-      hashtag_text="test"
-      title_text="Spotlight on: Websites zum Erleben"
-      paragraph_text="Lassen Sie sich anhand einiger ausgewählter Webprojekte inspirieren."
-    ></lc-news>
+
+  <body style="background-color: #f7f7f7">
+    <style>
+      .font-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+    </style>
+    <div class="font-list">
+      <lc-listitem
+        label_1="label1"
+        label_2="label2"
+        value_1="value1"
+        value_2="value2"
+      ></lc-listitem>
+      <lc-listitem
+        label_1="name"
+        label_2="age"
+        value_1="steffen"
+        value_2="9000+"
+      ></lc-listitem>
+    </div>
 
     <script src="webc_lc-listitem.js"></script>
   </body>

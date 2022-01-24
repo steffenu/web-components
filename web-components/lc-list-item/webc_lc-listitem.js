@@ -1,8 +1,8 @@
 /*
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
- * @Last Modified by: steffenu
- * @Last Modified time: 2022-01-21 09:37:50
+ * @Last Modified by: Medy
+ * @Last Modified time: 2022-01-24 13:53:07
  */
 /* 
 
@@ -17,6 +17,23 @@ DESCRIPTION
 //  ########## VISUALISATION ##############
 // Just for visualation ... Elements get created with javscript
 /* const template = `
+
+        <div class="font-list-item">
+          <ul class="labels">
+            <li class="label-font-family">font-family</li>
+            <li class="label-font-weight">font-weight</li>
+          </ul>
+          <ul class="values">
+            <li class="font-family">
+    
+            <!-- The download attribute only works for same-originl URLs. -->
+            <a style="text-decoration:none; color:#334115;" href="{{item["css"]["src"]}}" download="{{
+              item["css"]["font_family"] ~ item["css"]["font_weight"]
+            }}">{{ item["css"]["font_family"] }}</a>
+            </li>
+            <li class="font-weight">{{ item["css"]["font_weight"] }}</li>
+          </ul>
+        </div>
 
 
 
@@ -48,38 +65,52 @@ class lcListItem extends HTMLElement {
     // #################### CREATING ELEMENTS ########################
     // ###############################################################
 
-    const news_div = document.createElement("div");
-    const text_container = document.createElement("div");
-    const hashtag_text = document.createElement("p");
-    const title_text = document.createElement("h2");
-    const paragraph_text = document.createElement("p");
+    const item_div = document.createElement("div");
+
+    const lables = document.createElement("ul");
+    const labels_li_1 = document.createElement("li");
+    const labels_li_2 = document.createElement("li");
+
+    const values = document.createElement("ul");
+    const values_li_1 = document.createElement("li");
+    const values_li_2 = document.createElement("li");
 
     // #################### ADDING CLASSES ############################
     // ################################################################
 
-    news_div.classList.add("news-div");
-    text_container.classList.add("text-container");
-    hashtag_text.classList.add("hashtag-text");
-    title_text.classList.add("title-text");
-    paragraph_text.classList.add("paragraph-text");
+    item_div.classList.add("font-list-item");
+
+    lables.classList.add("labels");
+    labels_li_1.classList.add("labels-li_1");
+    labels_li_2.classList.add("labels-li_2");
+
+    values.classList.add("values");
+    values_li_1.classList.add("values-li_1");
+    values_li_2.classList.add("values-li_2");
 
     // #################### SETTING TEXT ##############################
     // ################################################################
 
-    hashtag_text.innerText = `${this.getAttribute("hashtag_text")}`;
-    title_text.innerText = `${this.getAttribute("title_text")}`;
-    paragraph_text.innerText = `${this.getAttribute("paragraph_text")}`;
+    labels_li_1.innerText = `${this.getAttribute("label_1")}`;
+    labels_li_2.innerText = `${this.getAttribute("label_2")}`;
+
+    values_li_1.innerText = `${this.getAttribute("value_1")}`;
+    values_li_2.innerText = `${this.getAttribute("value_2")}`;
 
     // #################### APPENDING ###################################
     // ##################################################################
 
-    text_container.appendChild(hashtag_text);
-    text_container.appendChild(title_text);
-    text_container.appendChild(paragraph_text);
-    news_div.appendChild(text_container);
+    lables.appendChild(labels_li_1);
+    lables.appendChild(labels_li_2);
+
+    values.appendChild(values_li_1);
+    values.appendChild(values_li_2);
+
+    item_div.appendChild(lables);
+    item_div.appendChild(values);
     //ul.appendChild(img);
 
-    shadow.appendChild(news_div);
+    shadow.appendChild(item_div);
 
     // CSS anlegen und ins Schatten-Dom einhängen
     // :host selektiert das Custom Element
@@ -90,132 +121,119 @@ class lcListItem extends HTMLElement {
     margin: 0;
     padding: 0;
   }
+
   
-
-    /* fredoka-one-regular - latin */
-    @font-face {
-      font-family: 'Fredoka One';
-      font-style: normal;
-      font-weight: 400;
-      src: url('assets/fonts/fredoka-one-v8-latin-regular.eot'); /* IE9 Compat Modes */
-      src: local(''),
-          url('assets/fonts/fredoka-one-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-          url('assets/fonts/fredoka-one-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-          url('assets/fonts/fredoka-one-v8-latin-regular.woff') format('woff'), /* Modern Browsers */
-          url('assets/fonts/fredoka-one-v8-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-          url('assets/fonts/fredoka-one-v8-latin-regular.svg#FredokaOne') format('svg'); /* Legacy iOS */
-    }
-
-
-        /* barlow-condensed-100 - latin */
-    @font-face {
-      font-family: 'Barlow Condensed';
-      font-style: normal;
-      font-weight: 100;
-      src: url('assets/fonts/barlow-condensed-v5-latin-100.eot'); /* IE9 Compat Modes */
-      src: local(''),
-          url('assets/fonts/barlow-condensed-v5-latin-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-          url('assets/fonts/barlow-condensed-v5-latin-100.woff2') format('woff2'), /* Super Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-100.woff') format('woff'), /* Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
-          url('assets/fonts/barlow-condensed-v5-latin-100.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
-    }
-    /* barlow-condensed-regular - latin */
-    @font-face {
-      font-family: 'Barlow Condensed';
-      font-style: normal;
-      font-weight: 400;
-      src: url('assets/fonts/barlow-condensed-v5-latin-regular.eot'); /* IE9 Compat Modes */
-      src: local(''),
-          url('assets/fonts/barlow-condensed-v5-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-          url('assets/fonts/barlow-condensed-v5-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-regular.woff') format('woff'), /* Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-          url('assets/fonts/barlow-condensed-v5-latin-regular.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
-    }
-    /* barlow-condensed-700 - latin */
-    @font-face {
-      font-family: 'Barlow Condensed';
-      font-style: normal;
-      font-weight: 700;
-      src: url('assets/fonts/barlow-condensed-v5-latin-700.eot'); /* IE9 Compat Modes */
-      src: local(''),
-          url('assets/fonts/barlow-condensed-v5-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-          url('assets/fonts/barlow-condensed-v5-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-700.woff') format('woff'), /* Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-          url('assets/fonts/barlow-condensed-v5-latin-700.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
-    }
-    /* barlow-condensed-900 - latin */
-    @font-face {
-      font-family: 'Barlow Condensed';
-      font-style: normal;
-      font-weight: 900;
-      src: url('assets/fonts/barlow-condensed-v5-latin-900.eot'); /* IE9 Compat Modes */
-      src: local(''),
-          url('assets/fonts/barlow-condensed-v5-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-          url('assets/fonts/barlow-condensed-v5-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-900.woff') format('woff'), /* Modern Browsers */
-          url('assets/fonts/barlow-condensed-v5-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
-          url('assets/fonts/barlow-condensed-v5-latin-900.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
-    }
-
-    .news-div {
-      display:flex;
-      justify-content:center;
-      align-items: center;
-      min-height : 16rem;
-      box-shadow: 0px 1px 0px 0px rgb(0 0 41 / 30%);
-      margin: 2rem 0 ;
-      background: #f7f7f7;
-      
-    }
-
-    .text-container {
-      display:flex;
-      flex-direction: column;
+  /* fira-code-300 - latin */
+  @font-face {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/fira-code-v14-latin-300.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/fira-code-v14-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/fira-code-v14-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/fira-code-v14-latin-300.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/fira-code-v14-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/fira-code-v14-latin-300.svg#FiraCode') format('svg'); /* Legacy iOS */
+  }
+  /* fira-code-700 - latin */
+  @font-face {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/fira-code-v14-latin-700.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/fira-code-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/fira-code-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/fira-code-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/fira-code-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/fira-code-v14-latin-700.svg#FiraCode') format('svg'); /* Legacy iOS */
+  }
 
 
-      
-    }
-    .hashtag-text{
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight : 700;
-      font-size:16px;
-      color: #2E3336);
-      line-height: 1.4;
-    }
-    .title-text {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight : 700;
-      font-size:26px;
-      color: rgb(142, 199, 215);
-      line-height: 1.4;
-    }
-    .paragraph-text {
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight : 100;
-      font-size:20px;
-      color:#2E3336;
-      line-height: 1.4;
-      -webkit-font-smoothing: antialiased; 
-    }
-   
-    .hashtag-text:before{
-      content: '#';
-      font-family: 'Fredoka One';
-      color: #900811;
-      padding-right: .03rem;
-      font-size: 18px;
-     }
+  /* barlow-condensed-100 - latin */
+  @font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 100;
+    src: url('assets/fonts/barlow-condensed-v5-latin-100.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('assets/fonts/barlow-condensed-v5-latin-100.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('assets/fonts/barlow-condensed-v5-latin-100.woff2') format('woff2'), /* Super Modern Browsers */
+        url('assets/fonts/barlow-condensed-v5-latin-100.woff') format('woff'), /* Modern Browsers */
+        url('assets/fonts/barlow-condensed-v5-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('assets/fonts/barlow-condensed-v5-latin-100.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
+  }
+  /* barlow-condensed-regular - latin */
 
-     @media (max-width: 1200px) {
-      .lc-header-list__item{
-        display:none;
-        
-      }
-      }
-    }
+  /* barlow-condensed-700 - latin */
+  @font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: url('assets/fonts/barlow-condensed-v5-latin-700.eot'); /* IE9 Compat Modes */
+    src: local(''),
+        url('assets/fonts/barlow-condensed-v5-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('assets/fonts/barlow-condensed-v5-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+        url('assets/fonts/barlow-condensed-v5-latin-700.woff') format('woff'), /* Modern Browsers */
+        url('assets/fonts/barlow-condensed-v5-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('assets/fonts/barlow-condensed-v5-latin-700.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
+  }
+
+
+
+  .font-list-item {
+    display: flex;
+    flex-direction: column;
+    border: 6px solid white;
+    border-radius: 5px;
+    flex-basis: 200px;
+    flex-grow: 1;
+    max-width: 400px;
+
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+
+    justify-content: center;
+    gap: 0.6rem;
+
+    padding: 1rem 4rem;
+  }
+
+
+
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 100;;
+    color: #334155;
+    font-size: 1rem;
+  }
+
+  .label-font-family {
+  }
+
+/*   .labels-li_2 {
+    margin-left: auto;
+  } */
+
+  .values {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .values-li_2  {
+  }
+/*   .values-li_2 {
+    margin-left: auto;
+  } */
 		`;
     shadow.appendChild(style);
 
