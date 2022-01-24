@@ -1,8 +1,8 @@
 /*
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
- * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-20 14:25:08
+ * @Last Modified by: Medy
+ * @Last Modified time: 2022-01-24 16:20:53
  */
 /* 
 
@@ -72,7 +72,10 @@ class lcHeader extends HTMLElement {
     let foldersAndFile = location.pathname.split("/");
     console.log("location:", foldersAndFile[1]); */
 
-    img.setAttribute("src", "../web-components/lc-header/assets/img/logo.svg");
+    img.setAttribute(
+      "src",
+      "../web-components/lc-header/assets/img/Google-logo.png"
+    );
 
     li_1.classList.add("lc-header-list__item");
     li_2.classList.add("lc-header-list__item");

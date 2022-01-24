@@ -1,8 +1,8 @@
 /*
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
- * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-19 11:55:56
+ * @Last Modified by: Medy
+ * @Last Modified time: 2022-01-24 16:20:35
  */
 /* 
 
@@ -116,13 +116,16 @@ class lcFooter extends HTMLElement {
     // LEFT SIDE
     div_left_side.classList.add("div-left-side");
 
-    img.setAttribute("src", "../web-components/lc-footer/assets/img/logo.svg");
+    img.setAttribute(
+      "src",
+      "../web-components/lc-footer/assets/img/Google-logo.png"
+    );
 
-    li_company.innerText = "LUPCOM media GmbH";
-    li_street.innerText = "Rahnstädter Weg 33";
-    li_plz.innerText = "18069 Rostock";
-    li_phone.innerText = "+49 381 20 35 49 33";
-    li_email.innerText = "info@lupcom.de";
+    li_company.innerText = "Random media GmbH";
+    li_street.innerText = "Random Weg 33";
+    li_plz.innerText = "123567 Random";
+    li_phone.innerText = "+49 111 111 111 11 11";
+    li_email.innerText = "info@Random.de";
 
     ul_adress.classList.add("adress-list");
     li_company.classList.add("adress_item");
