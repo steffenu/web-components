@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-31 16:45:06
+ * @Last Modified time: 2022-01-31 16:52:53
  */
 /* 
 
@@ -200,6 +200,7 @@ class lcHeader extends HTMLElement {
        font-size:32px;
        line-height:47.5px;
        color:#900811;
+       background-color:white;
 
        padding: 0 60px;
        padding-right:100px;
