@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-31 16:52:53
+ * @Last Modified time: 2022-01-31 16:59:49
  */
 /* 
 
@@ -116,9 +116,12 @@ class lcHeader extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `
 
-    *{
-      margin:0;
-      padding:0;
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     /* fredoka-one-regular - latin */
