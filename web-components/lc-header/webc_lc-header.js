@@ -1,8 +1,8 @@
 /*
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
- * @Last Modified by: Medy
- * @Last Modified time: 2022-01-24 16:20:53
+ * @Last Modified by: Steffen U.
+ * @Last Modified time: 2022-01-31 16:45:06
  */
 /* 
 
@@ -72,18 +72,32 @@ class lcHeader extends HTMLElement {
     let foldersAndFile = location.pathname.split("/");
     console.log("location:", foldersAndFile[1]); */
 
-    img.setAttribute(
-      "src",
-      "../web-components/lc-header/assets/img/Google-logo.png"
-    );
+    img.setAttribute("src", `${this.getAttribute("image_src")}`);
 
     li_1.classList.add("lc-header-list__item");
     li_2.classList.add("lc-header-list__item");
     li_3.classList.add("lc-header-list__item");
 
-    li_1.innerText = "projekte";
-    li_2.innerText = "teams";
-    li_3.innerText = "agentur";
+    if (this.getAttribute("item_1")) {
+      li_1.innerText = `${this.getAttribute("item_1")}`;
+    } else {
+      li_1.innerText = "";
+      li_1.classList.remove("lc-header-list__item");
+    }
+
+    if (this.getAttribute("item_2")) {
+      li_2.innerText = `${this.getAttribute("item_2")}`;
+    } else {
+      li_2.innerText = "";
+      li_2.classList.remove("lc-header-list__item");
+    }
+
+    if (this.getAttribute("item_3")) {
+      li_3.innerText = `${this.getAttribute("item_3")}`;
+    } else {
+      li_3.innerText = "";
+      li_3.classList.remove("lc-header-list__item");
+    }
 
     // #################### APPENDING ###################################
     // ##################################################################
@@ -101,6 +115,12 @@ class lcHeader extends HTMLElement {
     // :host selektiert das Custom Element
     const style = document.createElement("style");
     style.textContent = `
+
+    *{
+      margin:0;
+      padding:0;
+    }
+
     /* fredoka-one-regular - latin */
     @font-face {
       font-family: 'Fredoka One';
@@ -184,7 +204,10 @@ class lcHeader extends HTMLElement {
        padding: 0 60px;
        padding-right:100px;
        
-       box-shadow: 0 2px 2px 0 rgb(0 0 41 / 30%);
+       box-shadow: 0 2px 2px 0 rgb(0 0 41 / 30%); 
+       position: fixed;
+       width: 100%;
+       transition: all 0.5s;
      }
 
      .lc-header-list__item:before{
@@ -198,6 +221,7 @@ class lcHeader extends HTMLElement {
 
      .lc-header-logo{
        height: 57px;
+       transition: all 0.5s;
      }
 
      .darkmode{
@@ -223,7 +247,40 @@ class lcHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    // Element wurde ins DOM eingehängt
+    document.addEventListener("scroll", function (e) {
+      console.log("SCROLL");
+
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        document
+          .querySelector("lc-header")
+          .shadowRoot.querySelector(".lc-header-list").style.height = "80px";
+        console.log(
+          document
+            .querySelector("lc-header")
+            .shadowRoot.querySelector(".lc-header-list")
+        );
+        document
+          .querySelector("lc-header")
+          .shadowRoot.querySelector(".lc-header-logo").style.height = "40px";
+        //document.getElementById("logo").style.fontSize = "25px";
+      } else {
+        console.log(
+          document
+            .querySelector("lc-header")
+            .shadowRoot.querySelector(".lc-header-list")
+        );
+        document
+          .querySelector("lc-header")
+          .shadowRoot.querySelector(".lc-header-list").style.height = "175px";
+        document
+          .querySelector("lc-header")
+          .shadowRoot.querySelector(".lc-header-logo").style.height = "57px";
+        //document.getElementById("logo").style.fontSize = "35px";
+      }
+    });
   }
 
   disconnectedCallback() {
