@@ -1,8 +1,8 @@
 /*
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
- * @Last Modified by: Steffen U.
- * @Last Modified time: 2022-01-31 16:59:49
+ * @Last Modified by: steffenu
+ * @Last Modified time: 2022-02-01 08:20:31
  */
 /* 
 
@@ -208,8 +208,10 @@ class lcHeader extends HTMLElement {
        padding: 0 60px;
        padding-right:100px;
        
-       box-shadow: 0 2px 2px 0 rgb(0 0 41 / 30%); 
+       box-shadow: 0 2px 0px 0 rgb(0 0 41 / 30%); 
        position: fixed;
+       top:0;
+       left:0;
        width: 100%;
        transition: all 0.5s;
      }
@@ -235,11 +237,13 @@ class lcHeader extends HTMLElement {
      @media (max-width: 1200px) {
       .lc-header-list__item{
         display:none;
+     
         
       }
       .lc-header-list{
         justify-content:center;
-        padding-right:0;
+       
+        padding:0;
         
       }
       }
