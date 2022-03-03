@@ -24,3 +24,11 @@ Wenn konfiguration über attribute vorhanden ist :
       title_text="Spotlight on: Websites zum Erleben"
       paragraph_text="Lassen Sie sich anhand einiger ausgewählter Webprojekte inspirieren."
     ></lc-news>
+
+Finished
+
+- lc-animated-arrow
+- lc-loader
+- lc-list-item
+- lc-header
+- lc-image-card

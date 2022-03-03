@@ -2,7 +2,7 @@
  * @Author: Steffen U.
  * @Date: 2022-01-18 12:21:52
  * @Last Modified by: steffenu
- * @Last Modified time: 2022-03-02 10:51:55
+ * @Last Modified time: 2022-03-02 11:35:43
  */
 /* 
 
@@ -17,21 +17,16 @@ DESCRIPTION
 //  ########## VISUALISATION ##############
 // Just for visualation ... Elements get created with javscript
 /* const template = `
-<nav>
-<ul class="nav-list">
-  <img id="lc-logo" src="assets/img/logo.svg" alt="" />
-  <li class="nav-list__item">projekte</li>
-  <li class="nav-list__item">teams</li>
-  <li class="nav-list__item">agentur</li>
-</ul>
-</nav>
-<img src="" alt="" />
+
+
+
 
 `; */
 
 // Custom-Element my-element anlegen
-class lcHeader extends HTMLElement {
+class lcBubbleImage extends HTMLElement {
   // Festlegen, welche Attribute überwacht werden solle
+
   static get observedAttributes() {
     return ["attribut1", "attribut2"];
   }
@@ -45,6 +40,7 @@ class lcHeader extends HTMLElement {
     // Schatten-Dom anlegen
     // mode: 'open' : Vom Dokument aus ist der Zugriff auf das Schatten-Dom möglich.
     // mode: 'closed' : Der Zugriff auf das Schatten-Dom ist nicht möglich.
+
     const shadow = this.attachShadow({
       mode: "open",
     });
@@ -52,64 +48,66 @@ class lcHeader extends HTMLElement {
     // #################### CREATING ELEMENTS ########################
     // ###############################################################
 
-    const nav = document.createElement("nav");
+    const article_div = document.createElement("div");
+    const text_container = document.createElement("div");
+    const hashtag_text = document.createElement("p");
+    const title_text = document.createElement("h2");
+    const paragraph_text = document.createElement("p");
+    const list = document.createElement("ul");
 
-    const ul = document.createElement("ul");
+    const list_item_1 = document.createElement("li");
+    const list_item_2 = document.createElement("li");
+    const list_item_3 = document.createElement("li");
+    const list_item_4 = document.createElement("li");
+    const list_item_5 = document.createElement("li");
+    const list_item_6 = document.createElement("li");
 
-    const img = document.createElement("img");
+    const callToAction = document.createElement("a");
 
-    const li_1 = document.createElement("li");
-    const li_2 = document.createElement("li");
-    const li_3 = document.createElement("li");
+    // #################### ADDING CLASSES ############################
+    // ################################################################
 
-    // #################### CONFIGURING ELEMENTS ########################
-    // ##################################################################
+    news_div.classList.add("news-div");
+    text_container.classList.add("text-container");
+    hashtag_text.classList.add("hashtag-text");
+    title_text.classList.add("title-text");
+    paragraph_text.classList.add("paragraph-text");
 
-    ul.classList.add("lc-header-list");
-    img.classList.add("lc-header-logo");
+    list.classList.add("list");
 
-    /*     var location = window.location;
-    let foldersAndFile = location.pathname.split("/");
-    console.log("location:", foldersAndFile[1]); */
+    list_item_1.classList.add("list-item");
+    list_item_2.classList.add("list-item");
+    list_item_3.classList.add("list-item");
+    list_item_4.classList.add("list-item");
+    list_item_5.classList.add("list-item");
+    list_item_6.classList.add("list-item");
 
-    img.setAttribute("src", `${this.getAttribute("image_src")}`);
+    callToAction.classList.add("call-to-action");
 
-    li_1.classList.add("lc-header-list__item");
-    li_2.classList.add("lc-header-list__item");
-    li_3.classList.add("lc-header-list__item");
+    // #################### SETTING TEXT ##############################
+    // ################################################################
 
-    if (this.getAttribute("item_1")) {
-      li_1.innerText = `${this.getAttribute("item_1")}`;
-    } else {
-      li_1.innerText = "";
-      li_1.classList.remove("lc-header-list__item");
-    }
+    hashtag_text.innerText = `${this.getAttribute("hashtag_text")}`;
+    title_text.innerText = `${this.getAttribute("title_text")}`;
+    paragraph_text.innerText = `${this.getAttribute("paragraph_text")}`;
 
-    if (this.getAttribute("item_2")) {
-      li_2.innerText = `${this.getAttribute("item_2")}`;
-    } else {
-      li_2.innerText = "";
-      li_2.classList.remove("lc-header-list__item");
-    }
-
-    if (this.getAttribute("item_3")) {
-      li_3.innerText = `${this.getAttribute("item_3")}`;
-    } else {
-      li_3.innerText = "";
-      li_3.classList.remove("lc-header-list__item");
-    }
+    list_item_1.innerText = `${this.getAttribute("item1")}`;
+    list_item_2.innerText = `${this.getAttribute("item2")}`;
+    list_item_3.innerText = `${this.getAttribute("item3")}`;
+    list_item_4.innerText = `${this.getAttribute("item5")}`;
+    list_item_5.innerText = `${this.getAttribute("item6")}`;
+    list_item_6.innerText = `${this.getAttribute("item6")}`;
 
     // #################### APPENDING ###################################
     // ##################################################################
 
-    ul.appendChild(img);
-    ul.appendChild(li_1);
-    ul.appendChild(li_2);
-    ul.appendChild(li_3);
+    text_container.appendChild(hashtag_text);
+    text_container.appendChild(title_text);
+    text_container.appendChild(paragraph_text);
+    news_div.appendChild(text_container);
+    //ul.appendChild(img);
 
-    nav.appendChild(ul);
-
-    shadow.appendChild(nav);
+    shadow.appendChild(news_div);
 
     // CSS anlegen und ins Schatten-Dom einhängen
     // :host selektiert das Custom Element
@@ -123,6 +121,7 @@ class lcHeader extends HTMLElement {
       margin: 0;
       padding: 0;
     }
+  
 
     /* fredoka-one-regular - latin */
     @font-face {
@@ -192,64 +191,8 @@ class lcHeader extends HTMLElement {
           url('assets/fonts/barlow-condensed-v5-latin-900.svg#BarlowCondensed') format('svg'); /* Legacy iOS */
     }
 
-		 .lc-header-list{
-       display : flex;
-       list-style : none;
-       justify-content: space-between;
-       /* height: 175px; */
-       height: 80px;
-       align-items:center;
-       font-family: "Barlow Condensed", sans-serif;
-       font-weight : 700;
-       font-size:32px;
-       line-height:47.5px;
-       color:#900811;
-       background-color:white;
-
-       padding: 0 60px;
-       padding-right:100px;
-       
-       box-shadow: 0 2px 0px 0 rgb(0 0 41 / 30%); 
-       position: fixed;
-       top:0;
-       left:0;
-       width: 100%;
-       transition: all 0.5s;
-     }
-
-     .lc-header-list__item:before{
-      content: '#';
-      font-family: 'Fredoka One';
-      color: #900811;
-      padding-right: .03rem;
-      font-size: 32px;
-     }
 
 
-     .lc-header-logo{
-       height: 57px;
-       height: 40px;
-       transition: all 0.5s;
-     }
-
-     .darkmode{
-       background-color:#181A1B;
-     }
-
-     @media (max-width: 1200px) {
-      .lc-header-list__item{
-        display:none;
-     
-        
-      }
-      .lc-header-list{
-        justify-content:center;
-       
-        padding:0;
-        
-      }
-      }
-    }
 		`;
     shadow.appendChild(style);
 
@@ -257,40 +200,7 @@ class lcHeader extends HTMLElement {
   }
 
   connectedCallback() {
-    /*     document.addEventListener("scroll", function (e) {
-      console.log("SCROLL");
-
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        document
-          .querySelector("lc-header")
-          .shadowRoot.querySelector(".lc-header-list").style.height = "80px";
-        console.log(
-          document
-            .querySelector("lc-header")
-            .shadowRoot.querySelector(".lc-header-list")
-        );
-        document
-          .querySelector("lc-header")
-          .shadowRoot.querySelector(".lc-header-logo").style.height = "40px";
-        //document.getElementById("logo").style.fontSize = "25px";
-      } else {
-        console.log(
-          document
-            .querySelector("lc-header")
-            .shadowRoot.querySelector(".lc-header-list")
-        );
-        document
-          .querySelector("lc-header")
-          .shadowRoot.querySelector(".lc-header-list").style.height = "175px";
-        document
-          .querySelector("lc-header")
-          .shadowRoot.querySelector(".lc-header-logo").style.height = "57px";
-        //document.getElementById("logo").style.fontSize = "35px";
-      }
-    }); */
+    // Element wurde ins DOM eingehängt
   }
 
   disconnectedCallback() {
@@ -306,8 +216,8 @@ class lcHeader extends HTMLElement {
     // Achtung attributeChangedCallback wird vor connectedCallback aufgerufen
   }
 }
-customElements.define("lc-header", lcHeader);
+customElements.define("lc-buble-image", lcBubbleImage);
 
-/* var lc_header = document.createElement("lc-header");
+//var lc_news = document.createElement("lc-news");
 // Add it to the page
-document.body.appendChild(lc_header); */
+//document.body.appendChild(lc_news);

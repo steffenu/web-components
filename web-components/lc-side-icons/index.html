@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="height: 100vh">
+    <style>
+      .side_icons {
+        position: fixed;
+        right: 0;
+        top: calc(50% - 200px);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        gap: 10px;
+        height: 400px;
+        z-index: 9;
+      }
+    </style>
+    <div class="side_icons">
+      <a
+        href="location-finder.html"
+        class="locationFinder"
+        title="Location finden"
+        >Location Finder</a
+      >
+      <a href="kontakt.html" class="phone" title="Kontakt Telefon"
+        >Kontakt Telefon</a
+      >
+      <a href="kontakt.html" class="mail" title="Kontakt Mail">Kontakt Mail</a>
+      <a href="login.html" class="login" title="Login">Login</a>
+      <div class="mod_locationWatchlistLink invisible">
+        <a class="" href="location-finder/watchlist.html"
+          >Merkliste <span class="watchlist_count">0</span>
+        </a>
+      </div>
+    </div>
+  </body>
+
+  <script src="webc_lc-animated-arrow.js"></script>
+</html>

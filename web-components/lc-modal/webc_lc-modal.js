@@ -49,7 +49,7 @@ DESCRIPTION
 `; */
 
 // Custom-Element my-element anlegen
-class lcLoader extends HTMLElement {
+class lcModal extends HTMLElement {
   // Festlegen, welche Attribute überwacht werden solle
 
   static get observedAttributes() {
@@ -149,7 +149,7 @@ class lcLoader extends HTMLElement {
     // Achtung attributeChangedCallback wird vor connectedCallback aufgerufen
   }
 }
-customElements.define("lc-loader", lcLoader);
+customElements.define("lc-modal", lcModal);
 
 //var lc_news = document.createElement("lc-news");
 // Add it to the page

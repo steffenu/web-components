@@ -7,24 +7,39 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Open Modal</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
-      </div>
-    </div>
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Seiteninformationen</h2>
+        </div>
+        <div class="modal-body">
+    
+          <p class="modal_value" id="device_type"></p>
+          <p class="modal_value" id="pixel_ratio"></p>
+          <p class="modal_value" id="window_size"></p>
+          <p class="modal_value" id="platform"></p>
+          <p class="modal_value" id="vendor"></p>
+          <p class="modal_value" id="h1_info"></p>
+          <p class="modal_value" id="h2_info"></p>
+          <p class="modal_value" id="p_info"></p>
+          <p class="modal_value" id="button_info"></p>
+ 
+
+        </div>
 
     <style>
+      #vendor {
+        margin-bottom: 10px;
+      }
       /* The Modal (background) */
       .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
+        z-index: 4;
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -40,7 +55,6 @@
         margin: 15% auto; /* 15% from the top and centered */
         padding: 20px;
         border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
       }
 
       /* The Close Button */
@@ -57,33 +71,160 @@
         text-decoration: none;
         cursor: pointer;
       }
+
+      /* Modal Header */
+      .modal-header {
+        padding: 2px 16px;
+        background-color: #fff;
+        color: black;
+      }
+
+      /* Modal Body */
+      .modal-body {
+        padding: 2px 16px;
+      }
+
+      /* Modal Footer */
+      .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+      }
+
+      /* Modal Content */
+      .modal-content {
+        font-size: 2rem;
+        font-family: "Barlow Condensed";
+        width: fit-content;
+        position: relative;
+        top: calc(50% - 136px);
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: fit-content;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /*   animation-name: animatetop;
+        animation-duration: 0.4s */
+      }
     </style>
     <script>
-      // Get the modal
-      var modal = document.getElementById("myModal");
+      document.addEventListener("DOMContentLoaded", function (event) {
+        function device_typ() {
+          let intViewportWidth = window.innerWidth;
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("myBtn");
+          if (intViewportWidth > 1920) {
+            return "Desktop Big";
+          }
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+          if (intViewportWidth > 1234) {
+            return "Desktop";
+          }
 
-      // When the user clicks on the button, open the modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
+          if (intViewportWidth >= 500) {
+            return "Tablet";
+          }
 
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
+          if (intViewportWidth < 500) {
+            return "Phone";
+          }
         }
-      };
+
+        /*   let kit_id = document.getElementById("kit_id");
+        let kit_id_value = kit_id.attributes[1]["value"];
+        console.log("kit_id_check:", document.getElementById("kit_id"));
+
+        let db_id = document.getElementById("db_id").attributes[1]["value"]; */
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        /* WERTE des Modals setzen */
+
+        /*   document.getElementById("kit_id").innerText = `Adobe Kit Id: ${kit_id_value}`;
+        document.getElementById("db_id").innerText = `Datenbank Id: ${db_id}`; */
+
+        var value_modal = 0;
+        document.addEventListener("keypress", function (event) {
+          console.log(event.key);
+
+          if (event.key == "i") {
+            if (value_modal == 0) {
+              let device_type = device_typ();
+              const browserZoomLevel = Math.round(
+                window.devicePixelRatio * 100
+              );
+              let intViewportWidth = window.innerWidth;
+              let intViewportHeight = window.innerHeight;
+
+              let window_ratio = `${intViewportWidth} x ${intViewportHeight}`;
+
+              let browser_platform = navigator.platform;
+
+              let browser_vendor = navigator.vendor;
+
+              let smth = "TEST";
+              console.log("smth:", smth.fontSize);
+
+              let h1_info_fz = "TEST";
+
+              let h2_info_fz = "TEST";
+
+              let p_info_fz = "TEST";
+
+              console.log("h1_info_ff.fontFamily", h1_info_fz);
+              console.log("h1_info_ff.fontWeight", h1_info_fz);
+              console.log("h1_info_ff.fontSize", h1_info_fz);
+
+              let button_info_fz = "TEST";
+
+              modal.style.display = "block";
+              value_modal = 1;
+              document.getElementById(
+                "device_type"
+              ).innerText = `Geräte-typ: ${device_type}`;
+              document.getElementById(
+                "pixel_ratio"
+              ).innerText = `Browser Zoom: ${browserZoomLevel}`;
+              document.getElementById(
+                "window_size"
+              ).innerText = `Fenstergrösse: ${window_ratio}`;
+              document.getElementById(
+                "platform"
+              ).innerText = `Platform: ${browser_platform}`;
+              document.getElementById(
+                "vendor"
+              ).innerText = `Browser Vendor: ${browser_vendor}`;
+
+              document.getElementById(
+                "h1_info"
+              ).innerText = `H1: ${h1_info_fz} - ${h1_info_fz} - ${h1_info_fz}`;
+              document.getElementById(
+                "h2_info"
+              ).innerText = `H2: ${h2_info_fz} - ${h2_info_fz} - ${h2_info_fz}`;
+              document.getElementById(
+                "p_info"
+              ).innerText = `p: ${p_info_fz} - ${p_info_fz} - ${p_info_fz}`;
+              document.getElementById(
+                "button_info"
+              ).innerText = `Button: ${button_info_fz} - ${button_info_fz} - ${button_info_fz} `;
+            } else {
+              modal.style.display = "none";
+
+              value_modal = 0;
+            }
+          }
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+      });
     </script>
   </body>
   <script src="webc_lc-loader.js"></script>
